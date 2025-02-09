@@ -1,0 +1,69 @@
+<!-- form to add task -->
+
+
+<!-- <div class="flex flex-col items-center">
+  <div class=" w-[500px] p-10 m-10 mt-10 mx-auto max-w-xl flex items-center gap-x-4 rounded-xl shadow-lg outline outline-black/5 bg-gray-50"> 
+      <div class="w-[500px] bg-white rounded-lg shadow-lg p-8 mt-10">
+      <div>
+        <p class="felx text-center mb-5 text-4xl font-bold " >Add Task</p>
+        <form class="flex flex-col space-y-4">
+            <input class="p-2" type="text" placeholder="Enter email" >
+            <input class="p-2" type="password" placeholder="Enter password">
+            <input class="p-2" type="text" placeholder="Enter Phone Number">
+            <input class="p-2" type="text" placeholder="Enter City">
+            <button class="p-2" type="submit">Submit</button> 
+        </form>
+      </div>
+    
+   
+    </div>
+  </div> -->
+  
+  <div class="flex flex-col items-center">
+    <div class="w-[600px]  rounded-lg shadow-lg p-8 mt-10 outline outline-black/5 bg-gray-50">
+      <p class="text-center text-4xl font-bold font-caveat">Add Task</p>
+      
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col space-y-4">
+        <input type="email" placeholder="Enter email" class="p-2" formControlName="email">
+        <input type="password" placeholder="Enter Password" class="p-2" formControlName="password">
+        <input type="text" placeholder="Enter Phone Number" class="p-2" formControlName="phoneNumber">
+        <input type="text" placeholder="Enter City" class="p-2" formControlName="city">
+        <input type="textarea" placeholder="enter anything" class="p-2" formControlName="textArea">
+        <button type="submit" class="p-2" >{{ editId ? 'Update' : 'Submit' }}</button>
+      </form>
+    </div>
+  </div>
+
+  
+
+ <div class="flex flex-col items-center min-h-screen bg-gray-50 m-4">
+    <div class="w-[900px] bg-white rounded-lg shadow-lg p-8 mt-10">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="bg-gray-50">
+            <th class="p-4 text-left font-bold border-b border-gray-200">Email</th>
+            <th class="p-4 text-left font-bold border-b border-gray-200">Password</th>
+            <th class="p-4 text-left font-bold border-b border-gray-200">Phone Number</th>
+            <th class="p-4 text-left font-bold border-b border-gray-200">City</th>
+            <th class="p-4 text-left font-bold border-b border-gray-200">Text Area</th>
+            <th class="p-4 text-left font-bold border-b border-gray-200">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hover:bg-gray-50" *ngFor="let item of task">
+            <td class="p-4 border-b border-gray-200">{{item.email}}</td>
+            <td class="p-4 border-b border-gray-200">{{item.password}}</td>
+            <td class="p-4 border-b border-gray-200">{{item.phoneNumber}}</td>
+            <td class="p-4 border-b border-gray-200">{{item.city}}</td>
+            <td class="p-4 border-b border-gray-200">{{item.textArea}}</td>
+            <td class="p-4 border-b border-gray-200 space-x-2">
+              <button class="bg-blue-500 text-white px-3 py-1 rounded" (click)="update(item)">Update</button>
+              <button class="bg-red-500 text-white px-3 py-1 rounded" (click)="delete(item.id)">Delete</button>
+            </td>
+          </tr>
+         
+         
+        </tbody>
+      </table>
+    </div>
+  </div> 
